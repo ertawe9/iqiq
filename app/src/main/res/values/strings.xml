@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IRAQ B7R</string>
+
+    <string name="tab_cars">العربات</string>
+    <string name="tab_archive">الأرشيف</string>
+    <string name="tab_settings">الإعدادات</string>
+
+    <string name="central_time">التوقيت المركزي</string>
+    <string name="nearest_cart">أقرب عربة تخلص</string>
+
+    <string name="alliance_name">اسم التحالف:</string>
+    <string name="alliance_hint">اكتب اسم التحالف هنا…</string>
+    <string name="cart_type">نوع العربة:</string>
+    <string name="type_gear">عتاد</string>
+    <string name="type_skill">مهارة</string>
+    <string name="type_accessory">إكسسوار</string>
+    <string name="count_label">عدد المهارات / العربات:</string>
+    <string name="time_to_add">الوقت المراد إضافته:</string>
+    <string name="calc_button">احسب وقت العربة ⚔️</string>
+
+    <string name="current_carts">جدول العربات الحالية</string>
+    <string name="search_hint">ابحث بالاسم، النوع، العدد أو الوقت…</string>
+    <string name="empty_carts">لا توجد عربات مسجلة حالياً</string>
+    <string name="empty_archive">الأرشيف فارغ حالياً</string>
+
+    <string name="light_mode">الوضع الفاتح</string>
+    <string name="accent_color">لون الواجهة:</string>
+    <string name="floating_widget">الويدجت العائم</string>
+    <string name="enable_overlay_permission">تفعيل صلاحية العرض فوق التطبيقات</string>
+    <string name="start_widget">تشغيل الويدجت العائم</string>
+    <string name="stop_widget">إيقاف الويدجت العائم</string>
+    <string name="reset_app">إعادة ضبط البرنامج بالكامل ♻️</string>
+
+    <string name="notif_channel_name">ويدجت التوقيت العائم</string>
+    <string name="notif_channel_desc">إشعار ثابت أثناء تشغيل الويدجت العائم</string>
+</resources>

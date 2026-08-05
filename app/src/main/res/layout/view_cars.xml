@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🛡️ توقيتات عربات التحالف"
+            android:textColor="@color/text_main_dark"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="12dp" />
+
+        <!-- الساعة الحية -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_card"
+            android:padding="14dp">
+            <TextView
+                android:id="@+id/liveClockLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏱️ التوقيت المركزي"
+                android:textColor="@color/accent_gold"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/liveClock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="00:00:00"
+                android:textColor="@color/text_main_dark"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <!-- أقرب عربة تخلص -->
+        <LinearLayout
+            android:id="@+id/nearestCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_card"
+            android:padding="14dp"
+            android:layout_marginTop="12dp"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏳ أقرب عربة تخلص"
+                android:textColor="@color/accent_gold"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/nearestName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="—"
+                android:textColor="@color/text_main_dark"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/nearestTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="00:00:00"
+                android:textColor="@color/accent_gold"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <!-- الإحصائيات -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:weightSum="3">
+            <LinearLayout style="@style/StatCard">
+                <TextView android:id="@+id/statGear" style="@style/StatValue" android:text="0" />
+                <TextView style="@style/StatLabel" android:text="عتاد" />
+            </LinearLayout>
+            <LinearLayout style="@style/StatCard">
+                <TextView android:id="@+id/statSkill" style="@style/StatValue" android:text="0" />
+                <TextView style="@style/StatLabel" android:text="مهارات" />
+            </LinearLayout>
+            <LinearLayout style="@style/StatCard">
+                <TextView android:id="@+id/statTotal" style="@style/StatValue" android:text="0" />
+                <TextView style="@style/StatLabel" android:text="إجمالي" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- اسم التحالف -->
+        <TextView style="@style/FieldLabel" android:text="@string/alliance_name" />
+        <EditText
+            android:id="@+id/inputAllianceName"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_input"
+            android:paddingHorizontal="14dp"
+            android:hint="@string/alliance_hint"
+            android:textColorHint="@color/text_sub_dark"
+            android:textColor="@color/text_main_dark"
+            android:gravity="end|center_vertical" />
+
+        <!-- نوع العربة -->
+        <TextView style="@style/FieldLabel" android:text="@string/cart_type" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <Button android:id="@+id/btnTypeAccessory" style="@style/OptionBtn" android:text="@string/type_accessory" />
+            <Button android:id="@+id/btnTypeGear" style="@style/OptionBtn" android:text="@string/type_gear" />
+            <Button android:id="@+id/btnTypeSkill" style="@style/OptionBtn" android:text="@string/type_skill" />
+        </LinearLayout>
+
+        <!-- العدد -->
+        <TextView style="@style/FieldLabel" android:text="@string/count_label" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <Button android:id="@+id/btnCount2" style="@style/OptionBtn" android:text="2 (اختياري)" />
+            <Button android:id="@+id/btnCount1" style="@style/OptionBtn" android:text="1 (ثابت)" />
+        </LinearLayout>
+
+        <!-- الوقت -->
+        <TextView style="@style/FieldLabel" android:text="@string/time_to_add" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <Button android:id="@+id/btnUnitHour" style="@style/OptionBtn" android:text="ساعة" />
+            <Button android:id="@+id/btnUnitMinute" style="@style/OptionBtn" android:text="دقيقة" />
+            <EditText
+                android:id="@+id/inputTimeValue"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/bg_input"
+                android:gravity="center"
+                android:inputType="number"
+                android:text="15"
+                android:textColor="@color/accent_gold"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnCalc"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_button_rounded"
+            android:backgroundTint="@color/accent_gold"
+            android:text="@string/calc_button"
+            android:textColor="@color/bg_dark"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:background="#1F2A44" />
+
+        <TextView style="@style/FieldLabel" android:text="@string/current_carts" />
+        <EditText
+            android:id="@+id/inputSearch"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_input"
+            android:paddingHorizontal="14dp"
+            android:hint="@string/search_hint"
+            android:textColorHint="@color/text_sub_dark"
+            android:textColor="@color/text_main_dark"
+            android:gravity="end|center_vertical"
+            android:layout_marginTop="6dp" />
+
+        <TextView
+            android:id="@+id/emptyCartsMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_carts"
+            android:textColor="@color/text_sub_dark"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:padding="20dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cartsRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:nestedScrollingEnabled="false" />
+
+    </LinearLayout>
+</ScrollView>

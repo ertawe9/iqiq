@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/archiveName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="اسم التحالف"
+        android:textColor="@color/text_main_dark"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/archiveInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="السبب: مكتملة"
+        android:textColor="@color/text_sub_dark"
+        android:textSize="11sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:weightSum="2">
+        <Button
+            android:id="@+id/archiveRestoreBtn"
+            style="@style/OptionBtn"
+            android:text="↩️ استعادة" />
+        <Button
+            android:id="@+id/archiveDeleteBtn"
+            style="@style/OptionBtn"
+            android:text="🗑️ حذف نهائي"
+            android:textColor="@color/danger" />
+    </LinearLayout>
+</LinearLayout>

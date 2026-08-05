@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚙️ الإعدادات"
+            android:textColor="@color/text_main_dark"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- الوضع الفاتح -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_card"
+            android:padding="14dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/light_mode"
+                android:textColor="@color/text_main_dark"
+                android:textSize="13sp" />
+            <Switch
+                android:id="@+id/switchLightMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- لون الواجهة -->
+        <TextView style="@style/FieldLabel" android:text="@string/accent_color" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="8dp">
+            <ImageButton android:id="@+id/swatchGold" android:layout_width="38dp" android:layout_height="38dp" android:layout_margin="6dp" android:background="@drawable/bg_swatch" android:backgroundTint="@color/accent_gold" />
+            <ImageButton android:id="@+id/swatchRed" android:layout_width="38dp" android:layout_height="38dp" android:layout_margin="6dp" android:background="@drawable/bg_swatch" android:backgroundTint="@color/accent_red" />
+            <ImageButton android:id="@+id/swatchBlue" android:layout_width="38dp" android:layout_height="38dp" android:layout_margin="6dp" android:background="@drawable/bg_swatch" android:backgroundTint="@color/accent_blue" />
+            <ImageButton android:id="@+id/swatchGreen" android:layout_width="38dp" android:layout_height="38dp" android:layout_margin="6dp" android:background="@drawable/bg_swatch" android:backgroundTint="@color/accent_green" />
+            <ImageButton android:id="@+id/swatchPurple" android:layout_width="38dp" android:layout_height="38dp" android:layout_margin="6dp" android:background="@drawable/bg_swatch" android:backgroundTint="@color/accent_purple" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:background="#1F2A44" />
+
+        <!-- الويدجت العائم -->
+        <TextView style="@style/FieldLabel" android:text="@string/floating_widget" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="يعرض أقرب عربة تخلص فوق أي تطبيق ثاني بشكل دائم."
+            android:textColor="@color/text_sub_dark"
+            android:textSize="11sp"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnEnableOverlayPermission"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_option_off"
+            android:text="@string/enable_overlay_permission"
+            android:textColor="@color/accent_gold"
+            android:textSize="12sp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnToggleWidget"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button_rounded"
+            android:backgroundTint="@color/accent_gold"
+            android:text="@string/start_widget"
+            android:textColor="@color/bg_dark"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:background="#1F2A44" />
+
+        <Button
+            android:id="@+id/btnResetApp"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_button_rounded"
+            android:backgroundTint="@color/danger"
+            android:text="@string/reset_app"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</ScrollView>

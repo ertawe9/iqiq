@@ -1,0 +1,2 @@
+rootProject.name = "IraqB7rApp"
+include ':app'
