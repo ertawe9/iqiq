@@ -3,6 +3,7 @@ package com.iraqb7r.app
 import android.app.Service
 import android.content.Intent
 import android.graphics.PixelFormat
+import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Handler
 import android.os.IBinder
@@ -20,6 +21,7 @@ class OverlayService : Service() {
     private var overlayView: View? = null
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var tickRunnable: Runnable
+    private var currentCartId: Int? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -39,12 +41,7 @@ class OverlayService : Service() {
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
         overlayView = View.inflate(this, R.layout.overlay_widget, null)
 
-        val accent = DataStore.getAccent(this)
-        val accentColor = AccentTheme.colorFor(this, accent)
-        overlayView?.findViewById<View>(R.id.overlayRoot)?.let {
-            it.background?.setTint(accentColor)
-        }
-        overlayView?.findViewById<TextView>(R.id.overlayTime)?.setTextColor(accentColor)
+        applyAccentBorder()
 
         val overlayType = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
@@ -65,15 +62,25 @@ class OverlayService : Service() {
         makeDraggable(overlayView!!, params)
 
         overlayView?.findViewById<View>(R.id.overlayCloseBtn)?.setOnClickListener {
-            stopSelf()
+            currentCartId?.let { id -> CartEngine.removeCartById(this, id) }
+            updateOverlayContent()
         }
 
         try {
             windowManager?.addView(overlayView, params)
         } catch (e: Exception) {
-            // إذا الصلاحية غير ممنوحة، أوقف الخدمة بأمان
             stopSelf()
         }
+    }
+
+    private fun applyAccentBorder() {
+        val accentColor = AccentTheme.colorFor(this, DataStore.getAccent(this))
+        val root = overlayView?.findViewById<View>(R.id.overlayRoot)
+        (root?.background?.mutate() as? GradientDrawable)?.setStroke(
+            (1.5f * resources.displayMetrics.density).toInt(), accentColor
+        )
+        overlayView?.findViewById<TextView>(R.id.overlayLabel)?.setTextColor(accentColor)
+        overlayView?.findViewById<TextView>(R.id.overlayTime)?.setTextColor(accentColor)
     }
 
     private fun makeDraggable(view: View, params: WindowManager.LayoutParams) {
@@ -115,15 +122,20 @@ class OverlayService : Service() {
 
     private fun updateOverlayContent() {
         val nearest = CartEngine.tick(this)
+        val labelView = overlayView?.findViewById<TextView>(R.id.overlayLabel)
         val nameView = overlayView?.findViewById<TextView>(R.id.overlayName)
         val timeView = overlayView?.findViewById<TextView>(R.id.overlayTime)
-        val root = overlayView?.findViewById<View>(R.id.overlayRoot)
 
         if (nearest == null) {
+            currentCartId = null
+            labelView?.text = "—"
             nameView?.text = "لا توجد عربات نشطة"
             timeView?.text = "--:--:--"
+            timeView?.setTextColor(AccentTheme.colorFor(this, DataStore.getAccent(this)))
             return
         }
+        currentCartId = nearest.id
+        labelView?.text = CartEngine.typeLabel(nearest.cartType)
         nameView?.text = nearest.name
         timeView?.text = CartEngine.formatDuration(nearest.remainingMs)
 
@@ -132,7 +144,7 @@ class OverlayService : Service() {
         else
             AccentTheme.colorFor(this, DataStore.getAccent(this))
         timeView?.setTextColor(color)
-        root?.background?.setTint(color)
+        labelView?.setTextColor(color)
     }
 
     override fun onDestroy() {
